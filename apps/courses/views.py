@@ -121,8 +121,16 @@ def course_detail(request):
             },
         },
     ]
+    course_urls = {
+        'course_link': 'course_lessons',
+        'course_image': 'img/curso_2.jpg'
+    }
 
-    return render(request, "courses/course_detail.html", {"courses": courses})
+    return render(request, "courses/course_detail.html", {
+            "courses": courses,
+            "course_urls": course_urls
+        }
+    )
 
 
 def course_lessons(request):

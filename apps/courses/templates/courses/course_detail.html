@@ -68,7 +68,7 @@
                     <div class="course-info-card">
                         <div class="card-banner">
                             <div class="tag">{devilearn}</div>
-                            <img src="https://placehold.co/600x200/1e1e1e/ffffff?text=django" alt="Curso Django" />
+                            <img src="{% static course_urls.course_image %}" alt="Curso Django" />
                             <img class="author-avatar" src="https://randomuser.me/api/portraits/men/15.jpg" alt="Autor">
                         </div>
                         <div class="card-body">
@@ -78,7 +78,7 @@
                                 <li><i class="fa-solid fa-video"></i> 8 horas de contenido en video</li>
                                 <li><i class="fa-solid fa-graduation-cap"></i> Ricardo Cuéllar</li>
                             </ul>
-                            <a class="btn bnt-primary btn-course" href="course_lessons.html">Continuar aprendiendo</a>
+                            <a class="btn bnt-primary btn-course" href="{% static course_urls.course_link %}">Continuar aprendiendo</a>
 
                         </div>
                     </div>

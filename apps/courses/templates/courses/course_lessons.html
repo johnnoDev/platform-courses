@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso Django</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+{% block title %}Lecciones{% endblock title %}
+    
 
-    <link rel="stylesheet" href="./css/lessons.css">
-</head>
+{% block custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/lessons.css' %}">
+{% endblock custom_styles %}
 
-<body>
-    <!-- HEADER SUPERIOR -->
+
+{% block content %}
+     <!-- HEADER SUPERIOR -->
     <header class="topbar">
         <div class="acciones">
             <div class="back-link"> <button class="discusiones">← Ve al panel de control</button></div>
 
         </div>
-        <div class="logo"><img src="./images/devilearn.png" alt="Logo devilearn"></div>
+        <div class="logo"><img src="{% static 'img/devilearn.png' %}" alt="Logo devilearn"></div>
     </header>
 
     <!-- LAYOUT PRINCIPAL -->
@@ -75,8 +74,10 @@
             </div>
         </main>
     </div>
+{% endblock content %}
+    
+{% block scripts %}
+    <script src="{% static 'js/multimedia.js' %}"></script>
+{% endblock scripts %}
+        
 
-    <script src="./js/multimedia.js"></script>
-</body>
-
-</html>

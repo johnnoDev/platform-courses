@@ -134,4 +134,4 @@ def course_detail(request):
 
 
 def course_lessons(request):
-    pass
+    return render(request, 'courses/course_lessons.html')

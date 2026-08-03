@@ -121,17 +121,53 @@ def course_detail(request):
             },
         },
     ]
-    course_urls = {
-        'course_link': 'course_lessons',
-        'course_image': 'img/curso_2.jpg'
-    }
+    course_urls = {"course_link": "course_lessons", "course_image": "img/curso_2.jpg"}
 
-    return render(request, "courses/course_detail.html", {
-            "courses": courses,
-            "course_urls": course_urls
-        }
+    return render(
+        request,
+        "courses/course_detail.html",
+        {"courses": courses, "course_urls": course_urls},
     )
 
 
 def course_lessons(request):
-    return render(request, 'courses/course_lessons.html')
+    lesson = {
+        "course_title": "Django: Crea aplicaciones web robustas con Python",
+        "course_progress": 70,
+        "course_content": [
+            {
+                "id": 1,
+                "name": "Introducción al curso",
+                "total_lessons": 6,
+                "complete_lessons": 3,
+                "lessons": [
+                    {
+                        "name": "¿Qué aprenderás en este curso?",
+                        "type": "video",
+                    },
+                    {
+                        "name": "¿Cómo usar la plataforma?",
+                        "type": "file",
+                    },
+                ],
+            },
+            {
+                "id": 2,
+                "name": "Fundamentos necesarios de Python",
+                "total_lessons": 27,
+                "complete_lessons": 12,
+                "lessons": [
+                    {
+                        "name": "Variables",
+                        "type": "video",
+                    },
+                    {
+                        "name": "Condicionales",
+                        "type": "file",
+                    },
+                ],
+            },
+        ],
+    }
+
+    return render(request, "courses/course_lessons.html", {"lesson": lesson})

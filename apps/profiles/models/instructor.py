@@ -16,4 +16,4 @@ class InstructorProfile(models.Model):
     social_network = models.URLField(blank=True, null=True)
     
     def __str__(self):
-        return f'{self.get_full_name() or self.username}'
+        return f'Instructor: {self.get_full_name() or self.username}'

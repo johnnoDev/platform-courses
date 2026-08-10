@@ -14,7 +14,7 @@ class Progress(models.Model):
     progress = models.FloatField(default=0.0)
     
     class Meta:
-        unique_together = ('user', 'model')
+        unique_together = ('user', 'course')
     
     def __str__(self):
         return f'{self.user.username} - {self.course.title} - {self.progress}'

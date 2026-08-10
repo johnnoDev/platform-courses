@@ -7,11 +7,12 @@ class Course(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
-    categories = models.ManyToManyField(Category, through=CourseCategory, related_name='')
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     overview = models.TextField()
     created_at = models.DateField(auto_now_add=True)
+    categories = models.ManyToManyField(
+        Category, through='CourseCategory', related_name='course')
     image = models.URLField(blank=True, null=True)
     raiting = models.PositiveSmallIntegerField(
         validators=[MaxValueValidator(5)]
@@ -22,7 +23,7 @@ class Course(models.Model):
     duration = models.DurationField(blank=True, null=True)
     
     class Meta:
-        unique_together = ('owner', 'categories')
+        ordering = ['-created_at']
     
     def __str__(self):
         return self.title

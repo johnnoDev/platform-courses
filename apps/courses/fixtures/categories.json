@@ -1,0 +1,50 @@
+[
+{
+  "model": "courses.category",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 2,
+  "fields": {
+    "name": "Django",
+    "slug": "django"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 3,
+  "fields": {
+    "name": "Development Software",
+    "slug": "development-software"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 4,
+  "fields": {
+    "name": "Programacion Basica",
+    "slug": "programacion-basica"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 5,
+  "fields": {
+    "name": "Javascript",
+    "slug": "javascript"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 6,
+  "fields": {
+    "name": "Ruby",
+    "slug": "ruby"
+  }
+}
+]

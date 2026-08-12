@@ -14,13 +14,18 @@ class Course(models.Model):
     categories = models.ManyToManyField(
         Category, through='CourseCategory', related_name='course')
     image = models.URLField(blank=True, null=True)
-    raiting = models.PositiveSmallIntegerField(
+    rating = models.FloatField(
+        default= 0,
         validators=[MaxValueValidator(5)]
     )
-    level = models.PositiveSmallIntegerField(
-        validators=[MaxValueValidator(10)]
+    level = models.CharField(
+        blank=True,
+        null=True
     )
-    duration = models.DurationField(blank=True, null=True)
+    duration = models.FloatField(
+        blank=True, 
+        null=True
+    )
     
     class Meta:
         ordering = ['-created_at']

@@ -7,7 +7,8 @@ class InstructorProfile(models.Model):
     """
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='instructor_profile'
     )
     bio = models.TextField(blank=True)
     photo = models.URLField(blank=True, null=True)

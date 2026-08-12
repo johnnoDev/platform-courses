@@ -1,11 +1,21 @@
 from django.shortcuts import render
 from .models.course import Course
+from django.db.models import Q
 # Create your views here.
 
 
 def course_list(request):  # courses
     courses = Course.objects.all()
-    return render(request, "courses/courses.html", {"courses": courses})
+    
+    query = request.GET.get('q')
+    
+    if query:
+        courses = courses.filter(
+            Q(title__icontains=query) | Q(owner__first_name__icontains=query)
+        )
+    
+    
+    return render(request, "courses/courses.html", {"courses": courses, "query": query})
 
 
 def course_detail(request):

@@ -15,7 +15,7 @@ def course_list(request):  # courses
             Q(title__icontains=query) | Q(owner__first_name__icontains=query)
         )
     
-    paginator = Paginator(courses, 5)
+    paginator = Paginator(courses, 8)
     page_number = request.GET.get('page')
     courses_obj = paginator.get_page(page_number)
     

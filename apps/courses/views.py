@@ -27,7 +27,7 @@ def course_list(request):  # courses
     return render(request, "courses/courses.html", {"courses_obj": courses_obj, "query": query, "query_string": query_string})
 
 
-def course_detail(request):
+def course_detail(request, slug):
     courses = [
         {
             "course_title": "Django Aplicaciones",

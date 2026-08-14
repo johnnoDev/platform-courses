@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models.course import Course
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -28,87 +28,88 @@ def course_list(request):  # courses
 
 
 def course_detail(request, slug):
-    courses = [
-        {
-            "course_title": "Django Aplicaciones",
-            "course_link": "",
-            "course_info": {
-                "lessons": 79,
-                "duration": 8,
-                "instructor": "Ricardo Cuéllar",
-            },
-            "course_content": {
-                "id": 1,
-                "name": "Introducción al curso",
-                "lessons": [
-                    {
-                        "name": "¿Qué aprenderás en este curso?",
-                        "type": "video",
-                    },
-                    {
-                        "name": "¿Cómo usar la plataforma?",
-                        "type": "file",
-                    },
-                ],
-            },
-        },
-        {
-            "course_title": "",
-            "course_link": "",
-            "course_info": {
-                "lessons": 40,
-                "duration": 4,
-                "instructor": "Ricardo Cuéllar",
-            },
-            "course_content": {
-                "id": 2,
-                "name": "Fundamentos necesarios de Python",
-                "lessons": [
-                    {
-                        "name": "Variables y tipos de datos",
-                        "type": "video",
-                    },
-                    {
-                        "name": "Condicionales y bucles",
-                        "type": "file",
-                    },
-                    {
-                        "name": "Funciones básicas",
-                        "type": "file",
-                    },
-                ],
-            },
-        },
-        {
-            "course_title": "",
-            "course_link": "",
-            "course_info": {
-                "lessons": 50,
-                "duration": 4,
-                "instructor": "Ricardo Cuéllar",
-            },
-            "course_content": {
-                "id": 3,
-                "name": "Introducción a Django",
-                "lessons": [
-                    {
-                        "name": "¿Qué es Django?",
-                        "type": "video",
-                    },
-                    {
-                        "name": "Primer proyecto con Django",
-                        "type": "file",
-                    },
-                ],
-            },
-        },
-    ]
-    course_urls = {"course_link": "course_lessons", "course_image": "img/curso_2.jpg"}
+    # courses = [
+    #     {
+    #         "course_title": "Django Aplicaciones",
+    #         "course_link": "",
+    #         "course_info": {
+    #             "lessons": 79,
+    #             "duration": 8,
+    #             "instructor": "Ricardo Cuéllar",
+    #         },
+    #         "course_content": {
+    #             "id": 1,
+    #             "name": "Introducción al curso",
+    #             "lessons": [
+    #                 {
+    #                     "name": "¿Qué aprenderás en este curso?",
+    #                     "type": "video",
+    #                 },
+    #                 {
+    #                     "name": "¿Cómo usar la plataforma?",
+    #                     "type": "file",
+    #                 },
+    #             ],
+    #         },
+    #     },
+    #     {
+    #         "course_title": "",
+    #         "course_link": "",
+    #         "course_info": {
+    #             "lessons": 40,
+    #             "duration": 4,
+    #             "instructor": "Ricardo Cuéllar",
+    #         },
+    #         "course_content": {
+    #             "id": 2,
+    #             "name": "Fundamentos necesarios de Python",
+    #             "lessons": [
+    #                 {
+    #                     "name": "Variables y tipos de datos",
+    #                     "type": "video",
+    #                 },
+    #                 {
+    #                     "name": "Condicionales y bucles",
+    #                     "type": "file",
+    #                 },
+    #                 {
+    #                     "name": "Funciones básicas",
+    #                     "type": "file",
+    #                 },
+    #             ],
+    #         },
+    #     },
+    #     {
+    #         "course_title": "",
+    #         "course_link": "",
+    #         "course_info": {
+    #             "lessons": 50,
+    #             "duration": 4,
+    #             "instructor": "Ricardo Cuéllar",
+    #         },
+    #         "course_content": {
+    #             "id": 3,
+    #             "name": "Introducción a Django",
+    #             "lessons": [
+    #                 {
+    #                     "name": "¿Qué es Django?",
+    #                     "type": "video",
+    #                 },
+    #                 {
+    #                     "name": "Primer proyecto con Django",
+    #                     "type": "file",
+    #                 },
+    #             ],
+    #         },
+    #     },
+    # ]
+    # course_urls = {"course_link": "course_lessons", "course_image": "img/curso_2.jpg"}
+    course = get_object_or_404(Course, slug=slug)
 
     return render(
         request,
         "courses/course_detail.html",
-        {"courses": courses, "course_urls": course_urls},
+        {"course": course},
     )
 
 

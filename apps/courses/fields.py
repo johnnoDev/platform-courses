@@ -7,7 +7,7 @@ class OrderField(models.PositiveIntegerField):
         super().__init__(*args, **kwargs)
         
     def pre_save(self, model_intance, add):
-        if getattr(model_intance, self.attname):
+        if getattr(model_intance, self.attname)is None:
             try:
                 qs = self.model.objects.all()
                 

@@ -27,13 +27,13 @@ class Text(ItemBase):
     content = models.TextField()
 
 class File(ItemBase):
-    content = models.FileField(upload_to='files')
+    file = models.FileField(upload_to='files')
 
 class Image(ItemBase):
-    content = models.FileField(upload_to='images')
+    file = models.FileField(upload_to='images')
 
 class Video(ItemBase):
-    content = models.URLField()
+    url = models.URLField()
 
 class Content(models.Model):
     module = models.ForeignKey(

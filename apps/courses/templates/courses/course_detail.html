@@ -33,27 +33,19 @@
                                                 <ul>
                                                     {% for content in module.contents.all %}
                                                         {% if content.content_type.model == 'text' %}
-                                                            <li>
-                                                                <i class="fa-solid fa-align-left"></i>
-                                                            </li>
+                                                            <i class="fa-solid fa-align-left"></i>
                                                         {% endif %}
 
                                                         {% if content.content_type.model == 'file' %}
-                                                            <li>
-                                                                <i class="fa-solid fa-file"></i>
-                                                            </li>  
+                                                            <i class="fa-solid fa-file"></i>
                                                         {% endif %}
 
                                                         {% if content.content_type.model == 'image' %}
-                                                            <li>
-                                                                <i class="fa-solid fa-image"></i>
-                                                            </li>
+                                                            <i class="fa-solid fa-image"></i>
                                                         {% endif %}
 
                                                         {% if content.content_type.model == 'video' %}
-                                                            <li>
-                                                                <i class="fa-solid fa-video"></i>
-                                                            </li>
+                                                            <i class="fa-solid fa-video"></i>
                                                         {% endif %}
                                                         {{ content.item.title }}
 

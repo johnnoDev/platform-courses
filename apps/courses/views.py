@@ -30,11 +30,13 @@ def course_list(request):  # courses
 def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     modules = course.modules.prefetch_related('contents')
+    total_contents = sum(mudule.contents.count() for mudule in modules)
     return render(
         request,
         "courses/course_detail.html",{
             "course": course,
             "modules":modules,
+            "total_contents": total_contents
         },
     )
 

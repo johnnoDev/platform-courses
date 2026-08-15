@@ -24,28 +24,53 @@
                 <!-- === COURSE OVERVIEW === -->
                 <div class="course-layout">
                     <!-- Accordion del curso -->
-                    {% comment %} <div class="course-sections">
-                        <!--<h2>{{ course.course_title }}</h2>-->
+                    <div class="course-sections">
                             <div class="accordion">
-                                {% for course in courses %}
+                                {% for module in modules %}
                                     <div class="accordion-item">
-                                        <button class="accordion-header">Sección {{ course.course_content.id}}: {{ course.course_content.name }}</button>
+                                        <button class="accordion-header">Sección {{ forloop.counter }}: {{ module.title }}</button>
                                             <div class="accordion-content">
                                                 <ul>
-                                                    {% for lesson in course.course_content.lessons %}
-                                                        <li><i class="fa-solid fa-{{ lesson.type }}"></i>{{ lesson.name }}</li>
+                                                    {% for content in module.contents.all %}
+                                                        {% if content.content_type.model == 'text' %}
+                                                            <li>
+                                                                <i class="fa-solid fa-align-left"></i>
+                                                            </li>
+                                                        {% endif %}
+
+                                                        {% if content.content_type.model == 'file' %}
+                                                            <li>
+                                                                <i class="fa-solid fa-file"></i>
+                                                            </li>  
+                                                        {% endif %}
+
+                                                        {% if content.content_type.model == 'image' %}
+                                                            <li>
+                                                                <i class="fa-solid fa-image"></i>
+                                                            </li>
+                                                        {% endif %}
+
+                                                        {% if content.content_type.model == 'video' %}
+                                                            <li>
+                                                                <i class="fa-solid fa-video"></i>
+                                                            </li>
+                                                        {% endif %}
+                                                        {{ content.item.title }}
+
+                                                    {% empty %}
+                                                        <li>No existen registros aún</li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
                                     </div>
                                 {% endfor %}
                         </div>
-                    </div> {% endcomment %}
+                    </div> 
 
                     <!-- Card lateral -->
                     <div class="course-info-card">
                         <div class="card-banner">
-                            <div class="tag">{devilearn}</div>
+                            <div class="tag">{{ course.level }}</div>
                             <img src="{% if course.image %}{{ course.image }}{% else %}https://placehold.co/600x200?text='{{ course.title }}'{% endif %}" alt="{{ course.title }}" />
                             <img class="author-avatar" src="https://randomuser.me/api/portraits/men/15.jpg/" alt="Autor">
                         </div>

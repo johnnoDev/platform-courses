@@ -25,8 +25,8 @@
         <aside class="sidebar">
 
 
-            <h1 class="course-title">Django: Crea aplicaciones web robustas con Python</h1>
-            <p class="progress">{{ lesson.course_progress }}% completado</p>
+            <h1 class="course-title">{{ course_title }}</h1>
+            <p class="progress">{{ course.progress }}% completado</p>
 
 
             <input class="lesson-search" placeholder="Buscar...">
@@ -34,13 +34,13 @@
             </select>
             <!-- SECCIONES -->
             <div class="accordion">
-                {% for section in lesson.course_content %}
+                {% for module in modules %}
                     <div class="accordion-item">
-                        <button class="accordion-header">Sección {{ section.id }}: {{ section.name }} <span>{{ section.complete_lessons }} / {{ section.total_lessons }}</span></button>
+                        <button class="accordion-header">Sección {{ forloop.counter }}: {{ module.title }} <span>{{ module.complete_lessons }} / {{ module.contents.count }}</span></button>
                         <div class="accordion-content">
                             <ul>
-                                {% for lesson in section.lessons %}
-                                    <li>{{ lesson.name }}</li>
+                                {% for content in module.contents.all %}
+                                    <li>{{ content.item.title }}</li>
                                 {% endfor %}
                             </ul>
                         </div>

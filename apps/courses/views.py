@@ -41,7 +41,7 @@ def course_detail(request, slug):
     )
 
 
-def course_lessons(request):
+def course_lessons(request, slug):
     lesson = {
         "course_title": "Django: Crea aplicaciones web robustas con Python",
         "course_progress": 70,
